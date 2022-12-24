@@ -139,3 +139,103 @@ int main()
 	printf("%d,%d,%d\n", b, c, d);
 	return 0;
 }
+
+if语句：
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main()
+{
+	int a;
+	scanf("%d", &a);
+	if (a > 60)
+	{
+		printf("好吃\n");
+	}
+	else
+	{
+		printf("不好吃\n");
+	}
+	return 0;
+}
+
+a,b,c大小排序：
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main()
+{
+	double a, b, c,t;
+	scanf("%lf,%lf,%lf", &a, &b, &c);
+	if (a > b)
+	{
+		t = a;
+		a = b;
+		b = t;
+	}
+	if (a > c)
+	{
+		t = a;
+		a = c;
+		c = t;
+	}
+	if (b > c)
+	{
+		t = b;
+		b = c;
+		c = t;
+	}
+	printf("从小到大依次为%f,%f,%f\n", a, b, c);
+	return 0;
+}
+
+判断为大写字母转换为小写，反之不变：
+一
+#include<stdio.h>
+
+int main()
+{
+	char ch;
+	scanf("%c", &ch);
+	if (ch >= 'A'&&ch <= 'Z')
+		ch = ch + 32;
+	printf("%c\n", ch);
+	return 0;
+}
+二
+#include<stdio.h>
+
+int main()
+{
+	char ch;
+	scanf("%c", &ch);
+	ch=(ch>='A'&&ch<='Z')?(ch+32):ch;
+	printf("%c\n", ch);
+	return 0;
+}
+
+switch语句分等级：
+#include<stdio.h>
+
+int main()
+{
+	double degree;
+	printf("请输入分数：");
+	scanf("%lf", &degree);
+	switch ((int)(degree/10))
+	{
+	case 10:
+	case 9 : printf("该生等级为A\n"); break;
+	case 8: printf("该生等级为B\n"); break;
+	case 7: printf("该生等级为C\n"); break;
+	case 6: printf("该生等级为D\n"); break;
+	case 5:
+	case 4 :
+	case 3 :
+	case 2 :
+	case 1 :
+	case 0 : printf("该生等级为E\n");
+	default:printf("键入非0-100数字\n");
+	}
+	return 0;
+}
