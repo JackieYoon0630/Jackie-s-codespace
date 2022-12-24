@@ -25,3 +25,117 @@ int main()
 	printf("小写字母依次是%c%c%c\n",a,b,c);
 	return 0;
 }
+
+加密过程：
+#include<stdio.h>
+
+int main()
+{
+	char a = 'o', b = 'y', c = 'r', d = 'a';
+	a += 1;
+	b += 1;
+	c += 1;
+	d += 1;
+	printf("加密后输出的字符是%c%c%c%c\n",a,b,c,d);
+	return 0;
+}
+
+求平均数：
+#define _CRT_SECURE_NO_WARNINGS   #实操过程：scanf由于占用空间过大无法运行（两种方法：1、scanf语句变成scanf_s，这个仅对VS有用；2、最开头+define）
+#include<stdio.h>
+
+int main()
+{
+	int a,b,c,d,e,f,g,h,i,j,s;
+	scanf("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d", &a, &b,&c,&d,&e,&f,&g,&h,&i,&j);
+	s = (a + b+c+d+e+f+g+h+i+j) / 10;
+	printf("平均数为%d\n",s);
+	return 0;
+}
+
+定义大写字母：
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main()
+{
+	char a,s;
+	printf("请输入大写字母：\n");
+	scanf("%c", &a);
+	s=a+32;
+	printf("%c的小写字母是%c\n",a,s);
+	return 0;
+}
+
+putchar,getchar应用：
+#include<stdio.h>
+
+int main()
+{
+	char a, b, c;
+	printf("请输入三个大写字母：\n");  #注：这里三个字母之间不需要添加逗号
+	a = getchar();
+	b = getchar();
+	c = getchar();
+	a += 32;
+	b += 32;
+	c += 32;
+	putchar(a);
+	putchar(b);
+	putchar(c);
+	putchar('\n');
+	return 0;
+}
+
+求三角形的面积，输入abc，area=sqrt(s*(s-a)*(s-b)*(s-c))
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+	double a,b,c,s,area;
+	printf("请输入三角形三边长：\n");
+	scanf("%lf,%lf,%lf", &a, &b, &c);
+	s = (a + b + c) / 2;
+	area = sqrt(s*(s - a)*(s - b)*(s - c));  #注：不要落下*
+	printf("a=%f\tb=%f\tc=%f\n", a, b, c);
+	printf("三角形的面积area是%lf\n", area);
+	return 0;
+}
+
+求椭圆的两个根：
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+	double a, b, c,d,x1,x2;
+	printf("请输入a,b,c");
+	scanf("%lf,%lf,%lf", &a, &b, &c);
+	d = sqrt(b*b - 4 * a*c);
+	x1 = (-b + d) / (2*a);  #注：2a要写作2*a
+	x2 = (-b - d) / (2*a);
+	printf("a=%f\tb=%f\tc=%f\n", a, b, c);
+	printf("x1=%f\tx2=%f\n", x1, x2);
+	return 0;
+}
+
+输出百位十位个位数字：
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+	double a;
+	printf("输入一个0-999之间可以带小数的数字：\n");
+	scanf("%lf", &a);
+	int b, c, d;
+	b = (int)(a / 100);
+	c = (int)(a/10)%10;
+	d = (int)(a)%10;
+	printf("%d,%d,%d\n", b, c, d);
+	return 0;
+}
