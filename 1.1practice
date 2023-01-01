@@ -1,0 +1,21 @@
+
+指针变量求平均：
+#include<stdio.h>
+int main()
+{
+	float a[3][4] = { 65, 67, 70, 60, 80, 87, 90, 81, 90, 99, 93, 98 };
+	float *p;
+	p = &a[0][0];
+	float aver(float zu[][4], int n);
+	printf("三人的总平均分为%f", aver(a, 12));
+	return 0;
+}
+float aver(float zu[][4], int n)
+{
+	float sum = zu[0][0], pingjunfen;
+	float *p;
+	for (p = &zu[0][0]; p <= zu[0] + 11; p++)
+		sum = sum + *p;
+	pingjunfen = sum / n;
+	return(pingjunfen);
+}
