@@ -72,3 +72,36 @@ void shuchu(float *p, int n)
 		sum = sum + *(p+i*4+j);
 	printf("三个人的平均分为%f", sum/n);
 }
+
+输出字符串：
+#include<stdio.h>
+int main()
+{
+	int i;
+	char a[] = { 'I', ' ', 'a', 'm', ' ', 'h', 'a', 'p', 'p', 'y','\0' };
+	char b[1000];
+	for (i = 0; a[i] != '\0'; i++)
+		b[i] = a[i];
+	b[i+1] = '\0';
+	printf("字符串b为：\n");
+	for (i = 0; b[i] != '\0'; i++)
+		printf("%c", b[i]);
+	printf("\n");
+	return 0;
+}
+
+比大小：
+#include<stdio.h>
+int main()
+{
+	int a, b;
+	int max(int x, int y);
+	printf("请输入两个整数：\n");
+	scanf_s("%d,%d", &a, &b);
+	printf("较大的数为%d\n",max(a,b));
+	return 0;
+}
+int max(int x, int y)
+{
+	return(x > y ? x : y);
+}
