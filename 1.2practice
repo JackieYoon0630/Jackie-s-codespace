@@ -1,0 +1,15 @@
+二维数组选取元素：
+#include<stdio.h>
+int main()
+{
+	int a[3][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int(*p)[3];
+	p = a;
+	int i, j,hang,lie;
+	printf("请输入行与列：\n");
+	scanf_s("%d,%d", &hang, &lie);
+	i = hang - 1;
+	j = lie - 1;
+	printf("第%d行第%d列的元素值为%d", hang, lie, *(*(p + i) + j));
+	return 0;
+}
