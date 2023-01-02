@@ -202,3 +202,41 @@ float *search(float(*hang)[4], int n)
 	q = (hang + n)[0];
 	return(q);
 }
+
+存入结构体（遇到char字符串比较麻烦需用fgets）：
+#include<stdio.h>
+#include<string.h>  //注：使用fgets函数需引用
+struct student
+{
+	int xuehao;
+	char name[30];
+	float chengji;
+}a, b;
+int main()
+{
+	printf("请输入第一个学生的学号、姓名和成绩：\n");
+	scanf_s("%d", &a.xuehao);
+	getchar();
+	fgets(a.name, 30, stdin);  //注：scanf("",a.name)会遇到吞掉换行符的问题，改用fgets
+	a.name[strlen(a.name)-1] = '\0';  //fgets会出现多一个换行符的问题，当输入的字符数大于参数时，‘\0’结尾，小于等于参数时‘\n\0’结尾例输入"li",存入为"li\n\0"，所以要删除倒数第二位的换行符'\n'
+	scanf_s("%f", &a.chengji);
+	getchar();
+	printf("请输入第二个学生的学号、姓名和成绩：\n");
+	scanf_s("%d", &b.xuehao);
+	getchar();
+	fgets(b.name, 30, stdin);
+	b.name[strlen(b.name)-1] = '\0';
+	scanf_s("%f", &b.chengji);
+	getchar();
+	printf("成绩较高者的信息如下：\n");
+	if (a.chengji>b.chengji)
+		printf("%d\t%s\t%f\n", a.xuehao, a.name, a.chengji);
+	else if (a.chengji<b.chengji)
+		printf("%d\t%s\t%f\n", b.xuehao, b.name, b.chengji);
+	else
+	{
+		printf("%d\t%s\t%f\n", a.xuehao, a.name, a.chengji);
+		printf("%d\t%s\t%f\n", b.xuehao, b.name, b.chengji);
+	}
+	return 0;
+}
