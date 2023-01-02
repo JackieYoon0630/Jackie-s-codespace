@@ -13,3 +13,62 @@ int main()
 	printf("第%d行第%d列的元素值为%d", hang, lie, *(*(p + i) + j));
 	return 0;
 }
+
+形参数组名，实参数组名：
+#include<stdio.h>
+int main()
+{
+	void shuchu(float a[][4], int n);
+	float fenshu[3][4] = { { 65, 67, 70, 60 }, { 80, 87, 90, 81 }, { 90, 99, 93, 98 } };
+	shuchu(fenshu, 12);
+	return 0;
+}
+void shuchu(float a[][4], int n)
+{
+	float sum = 0;
+	int i,j;
+	for (i = 0; i <= 2; i++)
+		for (j = 0; j <= 3; j++)
+		sum = sum + a[i][j];
+	printf("三个人的平均分为%f", sum/n);
+}
+
+形参指针，实参数组名：
+#include<stdio.h>
+int main()
+{
+	void shuchu(float *p, int n);
+	float fenshu[3][4] = { { 65, 67, 70, 60 }, { 80, 87, 90, 81 }, { 90, 99, 93, 98 } };
+	shuchu(*fenshu, 12);
+	return 0;
+}
+void shuchu(float *p, int n)
+{
+	float sum = 0;
+	int i,j;
+	for (i = 0; i <= 2; i++)
+		for (j = 0; j <= 3; j++)
+		sum = sum + *(p+i*4+j);
+	printf("三个人的平均分为%f", sum/n);
+}
+
+形参指针，实参指针：
+#include<stdio.h>
+int main()
+{
+	void shuchu(float *p, int n);
+	float fenshu[3][4] = { { 65, 67, 70, 60 }, { 80, 87, 90, 81 }, { 90, 99, 93, 98 } };
+	float *m;
+	m = &fenshu[0][0];
+	shuchu(m, 12);
+	return 0;
+}
+void shuchu(float *p, int n)
+{
+	float sum = 0;
+	int i,j;
+	for (i = 0; i <= 2; i++)
+		for (j = 0; j <= 3; j++)
+		sum = sum + *(p+i*4+j);
+	printf("三个人的平均分为%f", sum/n);
+}
