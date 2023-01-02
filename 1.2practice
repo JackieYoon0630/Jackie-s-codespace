@@ -105,3 +105,100 @@ int max(int x, int y)
 {
 	return(x > y ? x : y);
 }
+
+指针函数比大小：
+#include<stdio.h>
+int main()
+{
+	int a, b;
+	int max(int x, int y);
+	int(*p)(int, int);
+	p = max;
+	printf("请输入两个整数：\n");
+	scanf_s("%d,%d", &a, &b);
+	printf("较大的数为%d\n",(*p)(a,b));
+	return 0;
+}
+int max(int x, int y)
+{
+	return(x > y ? x : y);
+}
+
+指针选择：
+1
+#include<stdio.h>
+int main()
+{
+	int a, b,choice;
+	int(*p)(int, int), (*q)(int, int);
+	int max(int x, int y);
+	int min(int x, int y);
+	p = max;
+	q = min;
+	printf("print two integers:\n");
+	scanf_s("%d,%d", &a, &b);
+	printf("choose operation 1 or 2:\n");
+	scanf_s("%d", &choice);
+	if (choice == 1)
+		printf("the max one is %d\n", (*p)(a, b));
+	else if (choice == 2)
+		printf("the min one is %d\n", (*q)(a, b));
+	else
+		printf("Wrong selection!\n");
+	return 0;
+}
+int max(int x, int y)
+{return(x > y ? x : y);}
+int min(int x, int y)
+{return(x > y ? y : x);}
+
+2
+#include<stdio.h>
+int main()
+{
+	int a, b,choice;
+	int(*p)(int, int);
+	int max(int x, int y);
+	int min(int x, int y);
+	p = max;
+	printf("print two integers:\n");
+	scanf_s("%d,%d", &a, &b);
+	printf("choose operation 1 or 2:\n");
+	scanf_s("%d", &choice);
+	if (choice == 1)
+		p=max;
+	else if (choice == 2)
+		p=min;
+	else
+		printf("Wrong selection!\n");
+	printf("the result is %d\n", (*p)(a, b));
+	return 0;
+}
+int max(int x, int y)
+{return(x > y ? x : y);}
+int min(int x, int y)
+{return(x > y ? y : x);}
+
+查找行：
+#include<stdio.h>
+int main()
+{
+	float *search(float(*hang)[4], int n);
+	float a[3][4] = { 65, 67, 70, 60, 80, 87, 90, 81, 90, 99, 93, 98 };
+	float *p;
+	int i, xvhao;
+	printf("请输入学生序号：\n");
+	scanf_s("%d", &xvhao);
+	printf("第%d位学生的成绩分别为：\n", xvhao);
+	p = search(a, xvhao - 1);
+	for (i = 0; i <= 3; i++)
+		printf("%f\t", *(p + i));
+	printf("\n");
+	return 0;
+}
+float *search(float(*hang)[4], int n)
+{
+	float *q;
+	q = (hang + n)[0];
+	return(q);
+}
