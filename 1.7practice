@@ -1,0 +1,25 @@
+从高到低输出学生信息：
+#include<stdio.h>
+struct student
+{
+	int xuehao;
+	char name[30];
+	float chengji;
+}xuesheng[3] = { 001, "Hou", 99, 002, "Liu", 20, 003,"Li", 90 };
+int main()
+{
+	struct student linshi;
+	int i,j;
+	for (i = 0; i < 2;i++)
+		for (j = i + 1; j < 3; j++)
+			if (xuesheng[i].chengji < xuesheng[j].chengji)
+			{
+				linshi = xuesheng[i];
+				xuesheng[i] = xuesheng[j];
+				xuesheng[j]= linshi;
+			}
+	printf("排序的各学生信息如下：\n");
+	for (i = 0; i <= 2; i++)
+		printf("%d\t%s\t%f\n", xuesheng[i].xuehao, xuesheng[i].name, xuesheng[i].chengji);
+	return 0;
+}
