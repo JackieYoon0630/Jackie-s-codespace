@@ -23,3 +23,46 @@ int main()
 		printf("%d\t%s\t%f\n", xuesheng[i].xuehao, xuesheng[i].name, xuesheng[i].chengji);
 	return 0;
 }
+
+结构体变量做函数参数：
+#include<stdio.h>
+#include<string.h>
+struct student
+{
+	int xuehao;
+	char name[30];
+	float fen1, fen2;
+}sheng[5];
+int main()
+{
+	struct student max(struct student a[]);
+	struct student xueba;
+	int i;
+	for (i = 0; i <= 4; i++)
+	{
+		printf("请输入第%d学生的学号、姓名和2门成绩：\n", i + 1);
+		scanf_s("%d", &sheng[i].xuehao);
+		getchar();
+		fgets(sheng[i].name, 30, stdin);
+		sheng[i].name[strlen(sheng[i].name) - 1] = '\0';
+		scanf_s("%f", &sheng[i].fen1);
+		getchar();
+		scanf_s("%f", &sheng[i].fen2);
+		getchar();
+	}
+	xueba = max(sheng);
+	printf("平均分最高的学生信息如下：\n");
+	printf("学号：%d\t姓名：%s\t2门成绩：%f,%f\n", xueba.xuehao, xueba.name, xueba.fen1, xueba.fen2);
+	return 0;
+}
+struct student max(struct student a[])
+{
+	int i,zuigao;
+	float pingjunfen[5];
+	for (i = 0; i <= 4; i++)
+		pingjunfen[i] = (sheng[i].fen1 + sheng[i].fen2) / 2;
+	for (zuigao=0,i = 0; i <= 4;i++)
+		if (pingjunfen[zuigao] < pingjunfen[i])
+			zuigao = i;
+	return(a[zuigao]);
+}
