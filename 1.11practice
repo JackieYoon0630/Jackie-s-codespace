@@ -1,0 +1,10 @@
+Pyhton基础语言：
+c=int(input("请输入一个整数："));print(c)
+
+a,b=3,2
+c=10/b
+d=a**b
+e=d//5.0
+a*=b+3
+f=min(a,b,c,d,e)
+print(a,b,c,d,e,f)
